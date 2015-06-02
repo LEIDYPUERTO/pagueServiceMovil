@@ -4,38 +4,163 @@
  */
 package dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Date;
 
+import Conexion.ConexionBD;
+import logica.EGas;
+import logica.EGasId;
 import logica.ELuz;
 import logica.ELuzId;
 
+
 /**
+ * Clase que permite realizar acciones sobre la entidad de 
+ * luz en la base de datos
+ * @author LEIDY
  *
- * @author user
  */
 public class LuzDao{  
 
-	public boolean guardaLuz(ELuz eLuz){ 
-		return true; 
+	/**
+	 * Método que permite almacenar un recibo de la luz en
+	 * la base de datos
+	 * @param eLuz
+	 * @return
+	 */
+	public boolean guardarLuz(ELuz eLuz){ 
+		try {
+			Connection conn = ConexionBD.obtenerConexion();
+
+			String queryInsertar = "INSERT INTO e_luz VALUES(?,?,?,?,?)";
+
+			PreparedStatement ppStm = conn.prepareStatement(queryInsertar);
+
+			ppStm.setInt(1, eLuz.getId().getReciboLuz());
+			ppStm.setDate(2, (java.sql.Date) eLuz.getFechaPagoLuz());
+			ppStm.setDouble(3, eLuz.getValorLuz());
+			ppStm.setString(4, eLuz.getDetallerLuz());
+			ppStm.setInt(5, eLuz.getId().getClienteCedula());
+
+			ppStm.executeUpdate();
+
+			conn.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+
+		} 
+		return true;
+	}  
+
+	/**
+	 * Método que permite actualizar la informacion 
+	 * del recibo de la luz en la base de datos
+	 * @param eLuz
+	 * @return
+	 */
+	public boolean actualizarLuz(ELuz eLuz){ 
+		
+		try {
+			Connection conn = ConexionBD.obtenerConexion();
+
+			String queryUpdate = "UPDATE e_luz SET"
+					+ " Fecha_Pago_Luz = ?, Valor_Luz = ?, Detaller_Luz = ? WHERE "
+					+ "Recibo_Luz = ?";
+
+			PreparedStatement ppStm = conn.prepareStatement(queryUpdate);
+
+			ppStm.setDate(1, (java.sql.Date) eLuz.getFechaPagoLuz());
+			ppStm.setDouble(2, eLuz.getValorLuz());
+			ppStm.setString(3, eLuz.getDetallerLuz());
+			ppStm.setInt(4, eLuz.getId().getReciboLuz());
+
+			ppStm.executeUpdate();
+
+			conn.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+
+		} 
+		return true;
 
 	}  
 
-	public void actualizaLuz(ELuz eLuz){ 
+	/**
+	 * Método que permite eliminar la informacion del recibo de la luz
+	 * @param eLuz
+	 * @return
+	 */
+	public boolean eliminarLuz(ELuz eLuz){ 
+		
+		try {
+			Connection conn = ConexionBD.obtenerConexion();
+			String queryDelete = "DELETE FROM e_luz "
+					+ "WHERE Recibo_Luz = ?";
 
+			PreparedStatement ppStm = conn.prepareStatement(queryDelete);
+			ppStm.setInt(1, eLuz.getId().getReciboLuz());
+
+			ppStm.executeUpdate();
+
+			conn.close();
+			return true;
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 	}  
 
-	public void eliminaLuz(ELuz eLuz){ 
-
-	}  
-
+	/**
+	 * Método que permite obtener la informacion del recibo de la luz
+	 * @param id
+	 * @return
+	 */
 	public ELuz obtenLuz(ELuzId id){ 
 		ELuz eLuz = null;  
+		try {
+			Connection conn = ConexionBD.obtenerConexion();
+			String querySearch = "SELECT FROM e_luz "
+					+ "WHERE Recibo_Luz = ?";
+
+			PreparedStatement ppStm = conn.prepareStatement(querySearch);
+			ppStm.setInt(1, id.getReciboLuz());
+
+			ResultSet resultSet = ppStm.executeQuery();
+
+			if(resultSet.next()){
+
+				eLuz = new ELuz();
+				eLuz.setId(new ELuzId(resultSet.getInt(1), resultSet.getInt(5)));
+				eLuz.setFechaPagoLuz(resultSet.getDate(2));
+				eLuz.setValorLuz(resultSet.getDouble(3));
+				eLuz.setDetallerLuz(resultSet.getString(4));
+			}else{
+				return eLuz;
+			}
+			conn.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		}
 		return eLuz; 
 	}  
 
 	public List<ELuz> obtenListaLuz(){ 
-		List<ELuz> listaLuz = null;  
+		List<ELuz> listaLuz = null;
 		return listaLuz; 
 	}  
 

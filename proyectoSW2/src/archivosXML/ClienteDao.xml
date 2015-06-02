@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://dao" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:ax25="http://logica/xsd" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema.xsd.xsd" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://dao">
+    <wsdl:documentation>
+		Please Type your service description here
+	</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema xmlns:ax26="http://logica/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://dao">
+            <xs:import namespace="http://logica/xsd"/>
+            <xs:element name="obtenCliente">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="id" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="obtenClienteResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax25:Cliente"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="guardaCliente">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="cliente" nillable="true" type="ax25:Cliente"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="guardaClienteResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="eliminaCliente">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="cliente" nillable="true" type="ax25:Cliente"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="eliminaClienteResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="obtenListaClientes">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="obtenListaClientesResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax25:Cliente"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="actualizacliente">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="cliente" nillable="true" type="ax25:Cliente"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="actualizaclienteResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://logica/xsd">
+            <xs:complexType name="Cliente">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="cedula" type="xs:int"/>
+                    <xs:element minOccurs="0" name="contrasena" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="genero" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="actualizaclienteRequest">
+        <wsdl:part name="parameters" element="ns:actualizacliente"/>
+    </wsdl:message>
+    <wsdl:message name="actualizaclienteResponse">
+        <wsdl:part name="parameters" element="ns:actualizaclienteResponse"/>
+    </wsdl:message>
+    <wsdl:message name="obtenListaClientesRequest">
+        <wsdl:part name="parameters" element="ns:obtenListaClientes"/>
+    </wsdl:message>
+    <wsdl:message name="obtenListaClientesResponse">
+        <wsdl:part name="parameters" element="ns:obtenListaClientesResponse"/>
+    </wsdl:message>
+    <wsdl:message name="guardaClienteRequest">
+        <wsdl:part name="parameters" element="ns:guardaCliente"/>
+    </wsdl:message>
+    <wsdl:message name="guardaClienteResponse">
+        <wsdl:part name="parameters" element="ns:guardaClienteResponse"/>
+    </wsdl:message>
+    <wsdl:message name="obtenClienteRequest">
+        <wsdl:part name="parameters" element="ns:obtenCliente"/>
+    </wsdl:message>
+    <wsdl:message name="obtenClienteResponse">
+        <wsdl:part name="parameters" element="ns:obtenClienteResponse"/>
+    </wsdl:message>
+    <wsdl:message name="eliminaClienteRequest">
+        <wsdl:part name="parameters" element="ns:eliminaCliente"/>
+    </wsdl:message>
+    <wsdl:message name="eliminaClienteResponse">
+        <wsdl:part name="parameters" element="ns:eliminaClienteResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="ClienteDaoPortType">
+        <wsdl:operation name="actualizacliente">
+            <wsdl:input message="ns:actualizaclienteRequest" wsaw:Action="urn:actualizacliente"/>
+            <wsdl:output message="ns:actualizaclienteResponse" wsaw:Action="urn:actualizaclienteResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="obtenListaClientes">
+            <wsdl:input message="ns:obtenListaClientesRequest" wsaw:Action="urn:obtenListaClientes"/>
+            <wsdl:output message="ns:obtenListaClientesResponse" wsaw:Action="urn:obtenListaClientesResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="guardaCliente">
+            <wsdl:input message="ns:guardaClienteRequest" wsaw:Action="urn:guardaCliente"/>
+            <wsdl:output message="ns:guardaClienteResponse" wsaw:Action="urn:guardaClienteResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="obtenCliente">
+            <wsdl:input message="ns:obtenClienteRequest" wsaw:Action="urn:obtenCliente"/>
+            <wsdl:output message="ns:obtenClienteResponse" wsaw:Action="urn:obtenClienteResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="eliminaCliente">
+            <wsdl:input message="ns:eliminaClienteRequest" wsaw:Action="urn:eliminaCliente"/>
+            <wsdl:output message="ns:eliminaClienteResponse" wsaw:Action="urn:eliminaClienteResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ClienteDaoSoap11Binding" type="ns:ClienteDaoPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="actualizacliente">
+            <soap:operation soapAction="urn:actualizacliente" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtenListaClientes">
+            <soap:operation soapAction="urn:obtenListaClientes" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="guardaCliente">
+            <soap:operation soapAction="urn:guardaCliente" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtenCliente">
+            <soap:operation soapAction="urn:obtenCliente" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="eliminaCliente">
+            <soap:operation soapAction="urn:eliminaCliente" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="ClienteDaoSoap12Binding" type="ns:ClienteDaoPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="actualizacliente">
+            <soap12:operation soapAction="urn:actualizacliente" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtenListaClientes">
+            <soap12:operation soapAction="urn:obtenListaClientes" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="guardaCliente">
+            <soap12:operation soapAction="urn:guardaCliente" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtenCliente">
+            <soap12:operation soapAction="urn:obtenCliente" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="eliminaCliente">
+            <soap12:operation soapAction="urn:eliminaCliente" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="ClienteDaoHttpBinding" type="ns:ClienteDaoPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="actualizacliente">
+            <http:operation location="actualizacliente"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtenListaClientes">
+            <http:operation location="obtenListaClientes"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="guardaCliente">
+            <http:operation location="guardaCliente"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtenCliente">
+            <http:operation location="obtenCliente"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="eliminaCliente">
+            <http:operation location="eliminaCliente"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="ClienteDao">
+        <wsdl:port name="ClienteDaoHttpSoap11Endpoint" binding="ns:ClienteDaoSoap11Binding">
+            <soap:address location="http://localhost:8080/proyectoSW2/services/ClienteDao.ClienteDaoHttpSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="ClienteDaoHttpSoap12Endpoint" binding="ns:ClienteDaoSoap12Binding">
+            <soap12:address location="http://localhost:8080/proyectoSW2/services/ClienteDao.ClienteDaoHttpSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="ClienteDaoHttpEndpoint" binding="ns:ClienteDaoHttpBinding">
+            <http:address location="http://localhost:8080/proyectoSW2/services/ClienteDao.ClienteDaoHttpEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

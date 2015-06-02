@@ -9,51 +9,54 @@ package logica;
 public class CrediGasId  implements java.io.Serializable {
 
 
-     private int contratoGas;
-     private int EGasNReciboGas;
+	private int contratoGas;
+	private int EGasNReciboGas;
 
-    public CrediGasId() {
-    }
+	public CrediGasId() {
+	}
 
-    public CrediGasId(int contratoGas, int EGasNReciboGas) {
-       this.contratoGas = contratoGas;
-       this.EGasNReciboGas = EGasNReciboGas;
-    }
-   
-    public int getContratoGas() {
-        return this.contratoGas;
-    }
-    
-    public void setContratoGas(int contratoGas) {
-        this.contratoGas = contratoGas;
-    }
-    public int getEGasNReciboGas() {
-        return this.EGasNReciboGas;
-    }
-    
-    public void setEGasNReciboGas(int EGasNReciboGas) {
-        this.EGasNReciboGas = EGasNReciboGas;
-    }
+	public CrediGasId(int contratoGas, int EGasNReciboGas) {
+		this.contratoGas = contratoGas;
+		this.EGasNReciboGas = EGasNReciboGas;
+	}
+
+	public int getContratoGas() {
+		return this.contratoGas;
+	}
+
+	public void setContratoGas(int contratoGas) {
+		this.contratoGas = contratoGas;
+	}
+	public int getEGasNReciboGas() {
+		return this.EGasNReciboGas;
+	}
+
+	public void setEGasNReciboGas(int EGasNReciboGas) {
+		this.EGasNReciboGas = EGasNReciboGas;
+	}
 
 
-   public boolean equals(Object other) {
-         if ( (this == other ) ) return true;
-		 if ( (other == null ) ) return false;
-		 if ( !(other instanceof CrediGasId) ) return false;
-		 CrediGasId castOther = ( CrediGasId ) other; 
-         
-		 return (this.getContratoGas()==castOther.getContratoGas())
- && (this.getEGasNReciboGas()==castOther.getEGasNReciboGas());
-   }
-   
-   public int hashCode() {
-         int result = 17;
-         
-         result = 37 * result + this.getContratoGas();
-         result = 37 * result + this.getEGasNReciboGas();
-         return result;
-   }   
+	public boolean equals(Object other) {
+		if ( (this == other ) ) return true;
+		if ( (other == null ) ) return false;
+		if ( !(other instanceof CrediGasId) ) return false;
+		CrediGasId castOther = ( CrediGasId ) other; 
 
+		return (this.getContratoGas()==castOther.getContratoGas())
+				&& (this.getEGasNReciboGas()==castOther.getEGasNReciboGas());
+	}
+
+	public int hashCode() {
+		int result = 17;
+
+		result = 37 * result + this.getContratoGas();
+		result = 37 * result + this.getEGasNReciboGas();
+		return result;
+	}   
+	
+	public int obtenerId(){
+		return Integer.parseInt(this.getContratoGas()+""+this.getEGasNReciboGas());
+	}
 
 }
 

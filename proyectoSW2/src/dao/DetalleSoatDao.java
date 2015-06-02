@@ -4,33 +4,149 @@
  */
 package dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
+import Conexion.ConexionBD;
+import logica.DetallePredio;
+import logica.DetallePredioId;
 import logica.DetalleSoat;
 import logica.DetalleSoatId;
 
+
 /**
+ * Clase que permite realizar acciones sobre el detalle soat en la base de datos
+ * @author LEIDY
  *
- * @author user
  */
 public class DetalleSoatDao{  
 
-	public boolean guardaDetalleSoat(DetalleSoat detalleSoat){ 
+	/**
+	 * Método que permite ingresar un detalle nuevo en la base de datos
+	 * @param detalleSoat
+	 * @return
+	 */
+	public boolean guardarDetalleSoat(DetalleSoat detalleSoat){ 
 
-		return true; 
+		try {
+			Connection conn = ConexionBD.obtenerConexion();
 
+			String queryInsertar = "INSERT INTO detalle_soat VALUES(?,?,?)";
+
+			PreparedStatement ppStm = conn.prepareStatement(queryInsertar);
+
+			ppStm.setString(1, detalleSoat.getDetalleSoat());
+			ppStm.setInt(2, detalleSoat.getId().getClienteCedula());
+			ppStm.setString(3, detalleSoat.getId().getSoatNPlaca());
+
+			ppStm.executeUpdate();
+
+			conn.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+
+		} 
+		return true;
 	}  
 
-	public void actualizaDetalleSoat(DetalleSoat detalleSoat){ 
+	/**
+	 * Método que permite actualizar la informacion en la base de datos
+	 * @param detalleSoat
+	 * @return
+	 */
+	public boolean actualizarDetalleSoat(DetalleSoat detalleSoat){ 
+		try {
+			Connection conn = ConexionBD.obtenerConexion();
 
+			String queryUpdate = "UPDATE detalle_soat SET"
+					+ " Detalle_Soat = ? WHERE "
+					+ "SOAT_N_Placa= ?";
+
+			PreparedStatement ppStm = conn.prepareStatement(queryUpdate);
+
+			ppStm.setString(1, detalleSoat.getDetalleSoat());
+			ppStm.setString(2, detalleSoat.getId().getSoatNPlaca());
+
+			ppStm.executeUpdate();
+
+			conn.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+
+		} 
+		return true;
 	}  
 
-	public void eliminaDetalleSoat(DetalleSoat detalleSoat){ 
+	/**
+	 * Método que permite eliminar el detalle del soat
+	 * @param detalleSoat
+	 * @return
+	 */
+	public boolean eliminarDetalleSoat(DetalleSoat detalleSoat){ 
 
+		try {
+			Connection conn = ConexionBD.obtenerConexion();
+			String queryDelete = "DELETE FROM detalle_soat "
+					+ "WHERE SOAT_N_Placa = ?";
+
+			PreparedStatement ppStm = conn.prepareStatement(queryDelete);
+			ppStm.setString(1, detalleSoat.getId().getSoatNPlaca());
+
+			ppStm.executeUpdate();
+
+			conn.close();
+			return true;
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 	}  
 
-	public DetalleSoat obtenDetalleSoat(DetalleSoatId id){ 
+	/**
+	 * Método que permite obtener el detalle del soat
+	 * @param id
+	 * @return
+	 */
+	public DetalleSoat obtenerDetalleSoat(DetalleSoatId id){ 
 		DetalleSoat detalleSoat = null;  
+		try {
+			Connection conn = ConexionBD.obtenerConexion();
+			String querySearch = "SELECT FROM detalle_soat "
+					+ "WHERE SOAT_N_Placa = ?";
+
+			PreparedStatement ppStm = conn.prepareStatement(querySearch);
+			ppStm.setString(1, id.getSoatNPlaca());
+
+			ResultSet resultSet = ppStm.executeQuery();
+
+			if(resultSet.next()){
+
+				detalleSoat = new DetalleSoat();
+				detalleSoat.setDetalleSoat(resultSet.getString(1));
+				detalleSoat.setId(new DetalleSoatId(resultSet.getInt(2),
+						resultSet.getString(3)));
+
+			}else{
+				return detalleSoat;
+			}
+			conn.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		}
 		return detalleSoat; 
 	}  
 
@@ -40,8 +156,8 @@ public class DetalleSoatDao{
 	}  
 
 	//       public static void main(String[] args) {
-		//           
-		//        DetalleSoatDao daods = new DetalleSoatDao();
+	//           
+	//        DetalleSoatDao daods = new DetalleSoatDao();
 	//        ClienteDao daoc = new ClienteDao();
 	//        SoatDao daos = new SoatDao();
 	//        // Guardar

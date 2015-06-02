@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://dao" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ax225="http://logica/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema.xsd.xsd" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://dao">
+    <wsdl:documentation>
+		Please Type your service description here
+	</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema xmlns:ax226="http://logica/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://dao">
+            <xs:import namespace="http://logica/xsd"/>
+            <xs:element name="guardarLuz">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="eLuz" nillable="true" type="ax225:ELuz"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="guardarLuzResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="actualizarLuz">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="eLuz" nillable="true" type="ax225:ELuz"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="actualizarLuzResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="eliminarLuz">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="eLuz" nillable="true" type="ax225:ELuz"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="eliminarLuzResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="obtenListaLuz">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="obtenListaLuzResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax225:ELuz"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="obtenLuz">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="id" nillable="true" type="ax225:ELuzId"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="obtenLuzResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax225:ELuz"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://logica/xsd">
+            <xs:complexType name="ELuz">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="detallerLuz" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="fechaPagoLuz" nillable="true" type="xs:date"/>
+                    <xs:element minOccurs="0" name="id" nillable="true" type="ax225:ELuzId"/>
+                    <xs:element minOccurs="0" name="valorLuz" type="xs:double"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ELuzId">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="clienteCedula" type="xs:int"/>
+                    <xs:element minOccurs="0" name="reciboLuz" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="obtenListaLuzRequest">
+        <wsdl:part name="parameters" element="ns:obtenListaLuz"/>
+    </wsdl:message>
+    <wsdl:message name="obtenListaLuzResponse">
+        <wsdl:part name="parameters" element="ns:obtenListaLuzResponse"/>
+    </wsdl:message>
+    <wsdl:message name="guardarLuzRequest">
+        <wsdl:part name="parameters" element="ns:guardarLuz"/>
+    </wsdl:message>
+    <wsdl:message name="guardarLuzResponse">
+        <wsdl:part name="parameters" element="ns:guardarLuzResponse"/>
+    </wsdl:message>
+    <wsdl:message name="obtenLuzRequest">
+        <wsdl:part name="parameters" element="ns:obtenLuz"/>
+    </wsdl:message>
+    <wsdl:message name="obtenLuzResponse">
+        <wsdl:part name="parameters" element="ns:obtenLuzResponse"/>
+    </wsdl:message>
+    <wsdl:message name="eliminarLuzRequest">
+        <wsdl:part name="parameters" element="ns:eliminarLuz"/>
+    </wsdl:message>
+    <wsdl:message name="eliminarLuzResponse">
+        <wsdl:part name="parameters" element="ns:eliminarLuzResponse"/>
+    </wsdl:message>
+    <wsdl:message name="actualizarLuzRequest">
+        <wsdl:part name="parameters" element="ns:actualizarLuz"/>
+    </wsdl:message>
+    <wsdl:message name="actualizarLuzResponse">
+        <wsdl:part name="parameters" element="ns:actualizarLuzResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="LuzDaoPortType">
+        <wsdl:operation name="obtenListaLuz">
+            <wsdl:input message="ns:obtenListaLuzRequest" wsaw:Action="urn:obtenListaLuz"/>
+            <wsdl:output message="ns:obtenListaLuzResponse" wsaw:Action="urn:obtenListaLuzResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="guardarLuz">
+            <wsdl:input message="ns:guardarLuzRequest" wsaw:Action="urn:guardarLuz"/>
+            <wsdl:output message="ns:guardarLuzResponse" wsaw:Action="urn:guardarLuzResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="obtenLuz">
+            <wsdl:input message="ns:obtenLuzRequest" wsaw:Action="urn:obtenLuz"/>
+            <wsdl:output message="ns:obtenLuzResponse" wsaw:Action="urn:obtenLuzResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="eliminarLuz">
+            <wsdl:input message="ns:eliminarLuzRequest" wsaw:Action="urn:eliminarLuz"/>
+            <wsdl:output message="ns:eliminarLuzResponse" wsaw:Action="urn:eliminarLuzResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="actualizarLuz">
+            <wsdl:input message="ns:actualizarLuzRequest" wsaw:Action="urn:actualizarLuz"/>
+            <wsdl:output message="ns:actualizarLuzResponse" wsaw:Action="urn:actualizarLuzResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="LuzDaoSoap11Binding" type="ns:LuzDaoPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="obtenListaLuz">
+            <soap:operation soapAction="urn:obtenListaLuz" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="guardarLuz">
+            <soap:operation soapAction="urn:guardarLuz" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtenLuz">
+            <soap:operation soapAction="urn:obtenLuz" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="eliminarLuz">
+            <soap:operation soapAction="urn:eliminarLuz" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="actualizarLuz">
+            <soap:operation soapAction="urn:actualizarLuz" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="LuzDaoSoap12Binding" type="ns:LuzDaoPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="obtenListaLuz">
+            <soap12:operation soapAction="urn:obtenListaLuz" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="guardarLuz">
+            <soap12:operation soapAction="urn:guardarLuz" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtenLuz">
+            <soap12:operation soapAction="urn:obtenLuz" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="eliminarLuz">
+            <soap12:operation soapAction="urn:eliminarLuz" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="actualizarLuz">
+            <soap12:operation soapAction="urn:actualizarLuz" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="LuzDaoHttpBinding" type="ns:LuzDaoPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="obtenListaLuz">
+            <http:operation location="obtenListaLuz"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="guardarLuz">
+            <http:operation location="guardarLuz"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtenLuz">
+            <http:operation location="obtenLuz"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="eliminarLuz">
+            <http:operation location="eliminarLuz"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="actualizarLuz">
+            <http:operation location="actualizarLuz"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="LuzDao">
+        <wsdl:port name="LuzDaoHttpSoap11Endpoint" binding="ns:LuzDaoSoap11Binding">
+            <soap:address location="http://localhost:8080/proyectoSW2/services/LuzDao.LuzDaoHttpSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="LuzDaoHttpSoap12Endpoint" binding="ns:LuzDaoSoap12Binding">
+            <soap12:address location="http://localhost:8080/proyectoSW2/services/LuzDao.LuzDaoHttpSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="LuzDaoHttpEndpoint" binding="ns:LuzDaoHttpBinding">
+            <http:address location="http://localhost:8080/proyectoSW2/services/LuzDao.LuzDaoHttpEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

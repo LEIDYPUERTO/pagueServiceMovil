@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://dao" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema.xsd" xmlns:ax219="http://logica/xsd" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://dao">
+    <wsdl:documentation>
+		Please Type your service description here
+	</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema xmlns:ax220="http://logica/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://dao">
+            <xs:import namespace="http://logica/xsd"/>
+            <xs:element name="obtenerDetalleSoat">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="id" nillable="true" type="ax220:DetalleSoatId"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="obtenerDetalleSoatResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax220:DetalleSoat"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="actualizarDetalleSoat">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="detalleSoat" nillable="true" type="ax220:DetalleSoat"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="actualizarDetalleSoatResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="eliminarDetalleSoat">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="detalleSoat" nillable="true" type="ax220:DetalleSoat"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="eliminarDetalleSoatResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="obtenListaDetalleSoat">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="obtenListaDetalleSoatResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax220:DetalleSoat"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="guardarDetalleSoat">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="detalleSoat" nillable="true" type="ax220:DetalleSoat"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="guardarDetalleSoatResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://logica/xsd">
+            <xs:complexType name="DetalleSoatId">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="clienteCedula" type="xs:int"/>
+                    <xs:element minOccurs="0" name="soatNPlaca" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="DetalleSoat">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="detalleSoat" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="id" nillable="true" type="ax219:DetalleSoatId"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="obtenerDetalleSoatRequest">
+        <wsdl:part name="parameters" element="ns:obtenerDetalleSoat"/>
+    </wsdl:message>
+    <wsdl:message name="obtenerDetalleSoatResponse">
+        <wsdl:part name="parameters" element="ns:obtenerDetalleSoatResponse"/>
+    </wsdl:message>
+    <wsdl:message name="guardarDetalleSoatRequest">
+        <wsdl:part name="parameters" element="ns:guardarDetalleSoat"/>
+    </wsdl:message>
+    <wsdl:message name="guardarDetalleSoatResponse">
+        <wsdl:part name="parameters" element="ns:guardarDetalleSoatResponse"/>
+    </wsdl:message>
+    <wsdl:message name="actualizarDetalleSoatRequest">
+        <wsdl:part name="parameters" element="ns:actualizarDetalleSoat"/>
+    </wsdl:message>
+    <wsdl:message name="actualizarDetalleSoatResponse">
+        <wsdl:part name="parameters" element="ns:actualizarDetalleSoatResponse"/>
+    </wsdl:message>
+    <wsdl:message name="obtenListaDetalleSoatRequest">
+        <wsdl:part name="parameters" element="ns:obtenListaDetalleSoat"/>
+    </wsdl:message>
+    <wsdl:message name="obtenListaDetalleSoatResponse">
+        <wsdl:part name="parameters" element="ns:obtenListaDetalleSoatResponse"/>
+    </wsdl:message>
+    <wsdl:message name="eliminarDetalleSoatRequest">
+        <wsdl:part name="parameters" element="ns:eliminarDetalleSoat"/>
+    </wsdl:message>
+    <wsdl:message name="eliminarDetalleSoatResponse">
+        <wsdl:part name="parameters" element="ns:eliminarDetalleSoatResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="DetalleSoatDaoPortType">
+        <wsdl:operation name="obtenerDetalleSoat">
+            <wsdl:input message="ns:obtenerDetalleSoatRequest" wsaw:Action="urn:obtenerDetalleSoat"/>
+            <wsdl:output message="ns:obtenerDetalleSoatResponse" wsaw:Action="urn:obtenerDetalleSoatResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="guardarDetalleSoat">
+            <wsdl:input message="ns:guardarDetalleSoatRequest" wsaw:Action="urn:guardarDetalleSoat"/>
+            <wsdl:output message="ns:guardarDetalleSoatResponse" wsaw:Action="urn:guardarDetalleSoatResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="actualizarDetalleSoat">
+            <wsdl:input message="ns:actualizarDetalleSoatRequest" wsaw:Action="urn:actualizarDetalleSoat"/>
+            <wsdl:output message="ns:actualizarDetalleSoatResponse" wsaw:Action="urn:actualizarDetalleSoatResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="obtenListaDetalleSoat">
+            <wsdl:input message="ns:obtenListaDetalleSoatRequest" wsaw:Action="urn:obtenListaDetalleSoat"/>
+            <wsdl:output message="ns:obtenListaDetalleSoatResponse" wsaw:Action="urn:obtenListaDetalleSoatResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="eliminarDetalleSoat">
+            <wsdl:input message="ns:eliminarDetalleSoatRequest" wsaw:Action="urn:eliminarDetalleSoat"/>
+            <wsdl:output message="ns:eliminarDetalleSoatResponse" wsaw:Action="urn:eliminarDetalleSoatResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="DetalleSoatDaoSoap11Binding" type="ns:DetalleSoatDaoPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="obtenerDetalleSoat">
+            <soap:operation soapAction="urn:obtenerDetalleSoat" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="guardarDetalleSoat">
+            <soap:operation soapAction="urn:guardarDetalleSoat" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="actualizarDetalleSoat">
+            <soap:operation soapAction="urn:actualizarDetalleSoat" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtenListaDetalleSoat">
+            <soap:operation soapAction="urn:obtenListaDetalleSoat" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="eliminarDetalleSoat">
+            <soap:operation soapAction="urn:eliminarDetalleSoat" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="DetalleSoatDaoSoap12Binding" type="ns:DetalleSoatDaoPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="obtenerDetalleSoat">
+            <soap12:operation soapAction="urn:obtenerDetalleSoat" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="guardarDetalleSoat">
+            <soap12:operation soapAction="urn:guardarDetalleSoat" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="actualizarDetalleSoat">
+            <soap12:operation soapAction="urn:actualizarDetalleSoat" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtenListaDetalleSoat">
+            <soap12:operation soapAction="urn:obtenListaDetalleSoat" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="eliminarDetalleSoat">
+            <soap12:operation soapAction="urn:eliminarDetalleSoat" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="DetalleSoatDaoHttpBinding" type="ns:DetalleSoatDaoPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="obtenerDetalleSoat">
+            <http:operation location="obtenerDetalleSoat"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="guardarDetalleSoat">
+            <http:operation location="guardarDetalleSoat"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="actualizarDetalleSoat">
+            <http:operation location="actualizarDetalleSoat"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtenListaDetalleSoat">
+            <http:operation location="obtenListaDetalleSoat"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="eliminarDetalleSoat">
+            <http:operation location="eliminarDetalleSoat"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="DetalleSoatDao">
+        <wsdl:port name="DetalleSoatDaoHttpSoap11Endpoint" binding="ns:DetalleSoatDaoSoap11Binding">
+            <soap:address location="http://localhost:8080/proyectoSW2/services/DetalleSoatDao.DetalleSoatDaoHttpSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="DetalleSoatDaoHttpSoap12Endpoint" binding="ns:DetalleSoatDaoSoap12Binding">
+            <soap12:address location="http://localhost:8080/proyectoSW2/services/DetalleSoatDao.DetalleSoatDaoHttpSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="DetalleSoatDaoHttpEndpoint" binding="ns:DetalleSoatDaoHttpBinding">
+            <http:address location="http://localhost:8080/proyectoSW2/services/DetalleSoatDao.DetalleSoatDaoHttpEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

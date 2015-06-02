@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://dao" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ax217="http://logica/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema.xsd" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://dao">
+    <wsdl:documentation>
+		Please Type your service description here
+	</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema xmlns:ax218="http://logica/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://dao">
+            <xs:import namespace="http://logica/xsd"/>
+            <xs:element name="guardaDetallePredio">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="detallePredio" nillable="true" type="ax217:DetallePredio"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="guardaDetallePredioResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="eliminaDetallePredio">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="detallePredio" nillable="true" type="ax217:DetallePredio"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="eliminaDetallePredioResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="obtenDetallePredio">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="id" nillable="true" type="ax217:DetallePredioId"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="obtenDetallePredioResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax217:DetallePredio"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="obtenListaDetallePredio">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="obtenListaDetallePredioResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax217:DetallePredio"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="actualizaDetallePredio">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="detallePredio" nillable="true" type="ax217:DetallePredio"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="actualizaDetallePredioResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://logica/xsd">
+            <xs:complexType name="DetallePredio">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="descripcionPredio" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="id" nillable="true" type="ax217:DetallePredioId"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="DetallePredioId">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="clienteCedula" type="xs:int"/>
+                    <xs:element minOccurs="0" name="impuestoPredialNPredio" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="obtenListaDetallePredioRequest">
+        <wsdl:part name="parameters" element="ns:obtenListaDetallePredio"/>
+    </wsdl:message>
+    <wsdl:message name="obtenListaDetallePredioResponse">
+        <wsdl:part name="parameters" element="ns:obtenListaDetallePredioResponse"/>
+    </wsdl:message>
+    <wsdl:message name="actualizaDetallePredioRequest">
+        <wsdl:part name="parameters" element="ns:actualizaDetallePredio"/>
+    </wsdl:message>
+    <wsdl:message name="actualizaDetallePredioResponse">
+        <wsdl:part name="parameters" element="ns:actualizaDetallePredioResponse"/>
+    </wsdl:message>
+    <wsdl:message name="eliminaDetallePredioRequest">
+        <wsdl:part name="parameters" element="ns:eliminaDetallePredio"/>
+    </wsdl:message>
+    <wsdl:message name="eliminaDetallePredioResponse">
+        <wsdl:part name="parameters" element="ns:eliminaDetallePredioResponse"/>
+    </wsdl:message>
+    <wsdl:message name="guardaDetallePredioRequest">
+        <wsdl:part name="parameters" element="ns:guardaDetallePredio"/>
+    </wsdl:message>
+    <wsdl:message name="guardaDetallePredioResponse">
+        <wsdl:part name="parameters" element="ns:guardaDetallePredioResponse"/>
+    </wsdl:message>
+    <wsdl:message name="obtenDetallePredioRequest">
+        <wsdl:part name="parameters" element="ns:obtenDetallePredio"/>
+    </wsdl:message>
+    <wsdl:message name="obtenDetallePredioResponse">
+        <wsdl:part name="parameters" element="ns:obtenDetallePredioResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="DetallePredioDaoPortType">
+        <wsdl:operation name="obtenListaDetallePredio">
+            <wsdl:input message="ns:obtenListaDetallePredioRequest" wsaw:Action="urn:obtenListaDetallePredio"/>
+            <wsdl:output message="ns:obtenListaDetallePredioResponse" wsaw:Action="urn:obtenListaDetallePredioResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="actualizaDetallePredio">
+            <wsdl:input message="ns:actualizaDetallePredioRequest" wsaw:Action="urn:actualizaDetallePredio"/>
+            <wsdl:output message="ns:actualizaDetallePredioResponse" wsaw:Action="urn:actualizaDetallePredioResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="eliminaDetallePredio">
+            <wsdl:input message="ns:eliminaDetallePredioRequest" wsaw:Action="urn:eliminaDetallePredio"/>
+            <wsdl:output message="ns:eliminaDetallePredioResponse" wsaw:Action="urn:eliminaDetallePredioResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="guardaDetallePredio">
+            <wsdl:input message="ns:guardaDetallePredioRequest" wsaw:Action="urn:guardaDetallePredio"/>
+            <wsdl:output message="ns:guardaDetallePredioResponse" wsaw:Action="urn:guardaDetallePredioResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="obtenDetallePredio">
+            <wsdl:input message="ns:obtenDetallePredioRequest" wsaw:Action="urn:obtenDetallePredio"/>
+            <wsdl:output message="ns:obtenDetallePredioResponse" wsaw:Action="urn:obtenDetallePredioResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="DetallePredioDaoSoap11Binding" type="ns:DetallePredioDaoPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="obtenListaDetallePredio">
+            <soap:operation soapAction="urn:obtenListaDetallePredio" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="actualizaDetallePredio">
+            <soap:operation soapAction="urn:actualizaDetallePredio" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="eliminaDetallePredio">
+            <soap:operation soapAction="urn:eliminaDetallePredio" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="guardaDetallePredio">
+            <soap:operation soapAction="urn:guardaDetallePredio" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtenDetallePredio">
+            <soap:operation soapAction="urn:obtenDetallePredio" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="DetallePredioDaoSoap12Binding" type="ns:DetallePredioDaoPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="obtenListaDetallePredio">
+            <soap12:operation soapAction="urn:obtenListaDetallePredio" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="actualizaDetallePredio">
+            <soap12:operation soapAction="urn:actualizaDetallePredio" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="eliminaDetallePredio">
+            <soap12:operation soapAction="urn:eliminaDetallePredio" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="guardaDetallePredio">
+            <soap12:operation soapAction="urn:guardaDetallePredio" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtenDetallePredio">
+            <soap12:operation soapAction="urn:obtenDetallePredio" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="DetallePredioDaoHttpBinding" type="ns:DetallePredioDaoPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="obtenListaDetallePredio">
+            <http:operation location="obtenListaDetallePredio"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="actualizaDetallePredio">
+            <http:operation location="actualizaDetallePredio"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="eliminaDetallePredio">
+            <http:operation location="eliminaDetallePredio"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="guardaDetallePredio">
+            <http:operation location="guardaDetallePredio"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtenDetallePredio">
+            <http:operation location="obtenDetallePredio"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="DetallePredioDao">
+        <wsdl:port name="DetallePredioDaoHttpSoap11Endpoint" binding="ns:DetallePredioDaoSoap11Binding">
+            <soap:address location="http://localhost:8080/proyectoSW2/services/DetallePredioDao.DetallePredioDaoHttpSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="DetallePredioDaoHttpSoap12Endpoint" binding="ns:DetallePredioDaoSoap12Binding">
+            <soap12:address location="http://localhost:8080/proyectoSW2/services/DetallePredioDao.DetallePredioDaoHttpSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="DetallePredioDaoHttpEndpoint" binding="ns:DetallePredioDaoHttpBinding">
+            <http:address location="http://localhost:8080/proyectoSW2/services/DetallePredioDao.DetallePredioDaoHttpEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

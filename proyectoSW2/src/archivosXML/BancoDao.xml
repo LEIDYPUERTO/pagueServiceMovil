@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://dao" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ax23="http://logica/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema.xsd.xsd" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://dao">
+    <wsdl:documentation>
+		Please Type your service description here
+	</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema xmlns:ax24="http://logica/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://dao">
+            <xs:import namespace="http://logica/xsd"/>
+            <xs:element name="guardaBanco">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="banco" nillable="true" type="ax23:Banco"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="guardaBancoResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="obtenBanco">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="id" nillable="true" type="ax23:BancoId"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="obtenBancoResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax23:Banco"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="eliminaBanco">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="banco" nillable="true" type="ax23:Banco"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="eliminaBancoResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="actualizaBanco">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="banco" nillable="true" type="ax23:Banco"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="actualizaBancoResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="obtenListaBanco">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="obtenListaBancoResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax23:Banco"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://logica/xsd">
+            <xs:complexType name="Banco">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="id" nillable="true" type="ax23:BancoId"/>
+                    <xs:element minOccurs="0" name="nombreBanco" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="saldo" type="xs:double"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="BancoId">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="clienteCedula" type="xs:int"/>
+                    <xs:element minOccurs="0" name="numeroCuenta" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="obtenListaBancoRequest">
+        <wsdl:part name="parameters" element="ns:obtenListaBanco"/>
+    </wsdl:message>
+    <wsdl:message name="obtenListaBancoResponse">
+        <wsdl:part name="parameters" element="ns:obtenListaBancoResponse"/>
+    </wsdl:message>
+    <wsdl:message name="eliminaBancoRequest">
+        <wsdl:part name="parameters" element="ns:eliminaBanco"/>
+    </wsdl:message>
+    <wsdl:message name="eliminaBancoResponse">
+        <wsdl:part name="parameters" element="ns:eliminaBancoResponse"/>
+    </wsdl:message>
+    <wsdl:message name="guardaBancoRequest">
+        <wsdl:part name="parameters" element="ns:guardaBanco"/>
+    </wsdl:message>
+    <wsdl:message name="guardaBancoResponse">
+        <wsdl:part name="parameters" element="ns:guardaBancoResponse"/>
+    </wsdl:message>
+    <wsdl:message name="actualizaBancoRequest">
+        <wsdl:part name="parameters" element="ns:actualizaBanco"/>
+    </wsdl:message>
+    <wsdl:message name="actualizaBancoResponse">
+        <wsdl:part name="parameters" element="ns:actualizaBancoResponse"/>
+    </wsdl:message>
+    <wsdl:message name="obtenBancoRequest">
+        <wsdl:part name="parameters" element="ns:obtenBanco"/>
+    </wsdl:message>
+    <wsdl:message name="obtenBancoResponse">
+        <wsdl:part name="parameters" element="ns:obtenBancoResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="BancoDaoPortType">
+        <wsdl:operation name="obtenListaBanco">
+            <wsdl:input message="ns:obtenListaBancoRequest" wsaw:Action="urn:obtenListaBanco"/>
+            <wsdl:output message="ns:obtenListaBancoResponse" wsaw:Action="urn:obtenListaBancoResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="eliminaBanco">
+            <wsdl:input message="ns:eliminaBancoRequest" wsaw:Action="urn:eliminaBanco"/>
+            <wsdl:output message="ns:eliminaBancoResponse" wsaw:Action="urn:eliminaBancoResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="guardaBanco">
+            <wsdl:input message="ns:guardaBancoRequest" wsaw:Action="urn:guardaBanco"/>
+            <wsdl:output message="ns:guardaBancoResponse" wsaw:Action="urn:guardaBancoResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="actualizaBanco">
+            <wsdl:input message="ns:actualizaBancoRequest" wsaw:Action="urn:actualizaBanco"/>
+            <wsdl:output message="ns:actualizaBancoResponse" wsaw:Action="urn:actualizaBancoResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="obtenBanco">
+            <wsdl:input message="ns:obtenBancoRequest" wsaw:Action="urn:obtenBanco"/>
+            <wsdl:output message="ns:obtenBancoResponse" wsaw:Action="urn:obtenBancoResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="BancoDaoSoap11Binding" type="ns:BancoDaoPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="obtenListaBanco">
+            <soap:operation soapAction="urn:obtenListaBanco" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="eliminaBanco">
+            <soap:operation soapAction="urn:eliminaBanco" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="guardaBanco">
+            <soap:operation soapAction="urn:guardaBanco" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtenBanco">
+            <soap:operation soapAction="urn:obtenBanco" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="actualizaBanco">
+            <soap:operation soapAction="urn:actualizaBanco" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="BancoDaoSoap12Binding" type="ns:BancoDaoPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="obtenListaBanco">
+            <soap12:operation soapAction="urn:obtenListaBanco" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="eliminaBanco">
+            <soap12:operation soapAction="urn:eliminaBanco" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="guardaBanco">
+            <soap12:operation soapAction="urn:guardaBanco" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtenBanco">
+            <soap12:operation soapAction="urn:obtenBanco" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="actualizaBanco">
+            <soap12:operation soapAction="urn:actualizaBanco" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="BancoDaoHttpBinding" type="ns:BancoDaoPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="obtenListaBanco">
+            <http:operation location="obtenListaBanco"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="eliminaBanco">
+            <http:operation location="eliminaBanco"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="guardaBanco">
+            <http:operation location="guardaBanco"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtenBanco">
+            <http:operation location="obtenBanco"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="actualizaBanco">
+            <http:operation location="actualizaBanco"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="BancoDao">
+        <wsdl:port name="BancoDaoHttpSoap11Endpoint" binding="ns:BancoDaoSoap11Binding">
+            <soap:address location="http://localhost:8080/proyectoSW2/services/BancoDao.BancoDaoHttpSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="BancoDaoHttpSoap12Endpoint" binding="ns:BancoDaoSoap12Binding">
+            <soap12:address location="http://localhost:8080/proyectoSW2/services/BancoDao.BancoDaoHttpSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="BancoDaoHttpEndpoint" binding="ns:BancoDaoHttpBinding">
+            <http:address location="http://localhost:8080/proyectoSW2/services/BancoDao.BancoDaoHttpEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
