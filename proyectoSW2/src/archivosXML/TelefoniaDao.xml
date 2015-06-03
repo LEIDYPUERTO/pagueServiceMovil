@@ -1,28 +1,26 @@
-<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ax29="http://logica/xsd" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://dao" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema.xsd.xsd.xsd.xsd" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://dao">
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://dao" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ax229="http://logica/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://dao">
     <wsdl:documentation>
 		Please Type your service description here
 	</wsdl:documentation>
     <wsdl:types>
-        <xs:schema xmlns:ax210="http://logica/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://dao">
+        <xs:schema xmlns:ax230="http://logica/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://dao">
             <xs:import namespace="http://logica/xsd"/>
-            <xs:element name="guardaTelefonia">
+            <xs:element name="obtenListaTelefonia">
                 <xs:complexType>
-                    <xs:sequence>
-                        <xs:element minOccurs="0" name="telefonia" nillable="true" type="ax29:Telefonia"/>
-                    </xs:sequence>
+                    <xs:sequence/>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="guardaTelefoniaResponse">
+            <xs:element name="obtenListaTelefoniaResponse">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax229:Telefonia"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
             <xs:element name="actualizaTelefonia">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element minOccurs="0" name="telefonia" nillable="true" type="ax29:Telefonia"/>
+                        <xs:element minOccurs="0" name="telefonia" nillable="true" type="ax229:Telefonia"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -33,36 +31,24 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="obtenListaTelefonia">
-                <xs:complexType>
-                    <xs:sequence/>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="obtenListaTelefoniaResponse">
+            <xs:element name="guardaTelefonia">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax29:Telefonia"/>
+                        <xs:element minOccurs="0" name="telefonia" nillable="true" type="ax229:Telefonia"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="obtenTelefonia">
+            <xs:element name="guardaTelefoniaResponse">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element minOccurs="0" name="id" nillable="true" type="ax29:TelefoniaId"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="obtenTelefoniaResponse">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element minOccurs="0" name="return" nillable="true" type="ax29:Telefonia"/>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
             <xs:element name="eliminarTelefonia">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element minOccurs="0" name="telefonia" nillable="true" type="ax29:Telefonia"/>
+                        <xs:element minOccurs="0" name="telefonia" nillable="true" type="ax229:Telefonia"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -73,13 +59,27 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
+            <xs:element name="obtenTelefonia">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="id" nillable="true" type="ax229:TelefoniaId"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="obtenTelefoniaResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax229:Telefonia"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
         </xs:schema>
         <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://logica/xsd">
             <xs:complexType name="Telefonia">
                 <xs:sequence>
                     <xs:element minOccurs="0" name="detalleTelefonia" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="fechaPagoTelefonia" nillable="true" type="xs:date"/>
-                    <xs:element minOccurs="0" name="id" nillable="true" type="ax29:TelefoniaId"/>
+                    <xs:element minOccurs="0" name="id" nillable="true" type="ax229:TelefoniaId"/>
                     <xs:element minOccurs="0" name="valorTelefonia" type="xs:int"/>
                 </xs:sequence>
             </xs:complexType>

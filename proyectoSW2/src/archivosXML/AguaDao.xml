@@ -5,32 +5,6 @@
     <wsdl:types>
         <xs:schema xmlns:ax22="http://logica/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://dao">
             <xs:import namespace="http://logica/xsd"/>
-            <xs:element name="obtenListaAgua">
-                <xs:complexType>
-                    <xs:sequence/>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="obtenListaAguaResponse">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax21:EAgua"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="eliminaAgua">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element minOccurs="0" name="eAgua" nillable="true" type="ax21:EAgua"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="eliminaAguaResponse">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
             <xs:element name="guardaAgua">
                 <xs:complexType>
                     <xs:sequence>
@@ -39,6 +13,20 @@
                 </xs:complexType>
             </xs:element>
             <xs:element name="guardaAguaResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="actualizaAgua">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="eAgua" nillable="true" type="ax21:EAgua"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="actualizaAguaResponse">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="return" type="xs:boolean"/>
@@ -59,17 +47,29 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="actualizaAgua">
+            <xs:element name="eliminaAgua">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="eAgua" nillable="true" type="ax21:EAgua"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="actualizaAguaResponse">
+            <xs:element name="eliminaAguaResponse">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="obtenListaAgua">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="obtenListaAguaResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax21:EAgua"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
