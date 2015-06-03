@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://dao" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:ax223="http://logica/xsd" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema.xsd.xsd.xsd.xsd.xsd.xsd" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://dao">
+    <wsdl:documentation>
+		Please Type your service description here
+	</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema xmlns:ax224="http://logica/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://dao">
+            <xs:import namespace="http://logica/xsd"/>
+            <xs:element name="guardarInternetv">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="internetTv" nillable="true" type="ax223:InternetTv"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="guardarInternetvResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="eliminarInternetv">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="internetTv" nillable="true" type="ax223:InternetTv"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="eliminarInternetvResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="obtenListaInternetv">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="obtenListaInternetvResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax223:InternetTv"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="actualizarInternetv">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="internetTv" nillable="true" type="ax223:InternetTv"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="actualizarInternetvResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="obtenerInternetv">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="id" nillable="true" type="ax223:InternetTvId"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="obtenerInternetvResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax223:InternetTv"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://logica/xsd">
+            <xs:complexType name="InternetTv">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="detallerInternet" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="fechaPagoInternet" nillable="true" type="xs:date"/>
+                    <xs:element minOccurs="0" name="id" nillable="true" type="ax223:InternetTvId"/>
+                    <xs:element minOccurs="0" name="valorInternet" type="xs:double"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="InternetTvId">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="clienteCedula" type="xs:int"/>
+                    <xs:element minOccurs="0" name="reciboInternet" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="guardarInternetvRequest">
+        <wsdl:part name="parameters" element="ns:guardarInternetv"/>
+    </wsdl:message>
+    <wsdl:message name="guardarInternetvResponse">
+        <wsdl:part name="parameters" element="ns:guardarInternetvResponse"/>
+    </wsdl:message>
+    <wsdl:message name="obtenerInternetvRequest">
+        <wsdl:part name="parameters" element="ns:obtenerInternetv"/>
+    </wsdl:message>
+    <wsdl:message name="obtenerInternetvResponse">
+        <wsdl:part name="parameters" element="ns:obtenerInternetvResponse"/>
+    </wsdl:message>
+    <wsdl:message name="eliminarInternetvRequest">
+        <wsdl:part name="parameters" element="ns:eliminarInternetv"/>
+    </wsdl:message>
+    <wsdl:message name="eliminarInternetvResponse">
+        <wsdl:part name="parameters" element="ns:eliminarInternetvResponse"/>
+    </wsdl:message>
+    <wsdl:message name="actualizarInternetvRequest">
+        <wsdl:part name="parameters" element="ns:actualizarInternetv"/>
+    </wsdl:message>
+    <wsdl:message name="actualizarInternetvResponse">
+        <wsdl:part name="parameters" element="ns:actualizarInternetvResponse"/>
+    </wsdl:message>
+    <wsdl:message name="obtenListaInternetvRequest">
+        <wsdl:part name="parameters" element="ns:obtenListaInternetv"/>
+    </wsdl:message>
+    <wsdl:message name="obtenListaInternetvResponse">
+        <wsdl:part name="parameters" element="ns:obtenListaInternetvResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="InternetvDaoPortType">
+        <wsdl:operation name="guardarInternetv">
+            <wsdl:input message="ns:guardarInternetvRequest" wsaw:Action="urn:guardarInternetv"/>
+            <wsdl:output message="ns:guardarInternetvResponse" wsaw:Action="urn:guardarInternetvResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="obtenerInternetv">
+            <wsdl:input message="ns:obtenerInternetvRequest" wsaw:Action="urn:obtenerInternetv"/>
+            <wsdl:output message="ns:obtenerInternetvResponse" wsaw:Action="urn:obtenerInternetvResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="eliminarInternetv">
+            <wsdl:input message="ns:eliminarInternetvRequest" wsaw:Action="urn:eliminarInternetv"/>
+            <wsdl:output message="ns:eliminarInternetvResponse" wsaw:Action="urn:eliminarInternetvResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="actualizarInternetv">
+            <wsdl:input message="ns:actualizarInternetvRequest" wsaw:Action="urn:actualizarInternetv"/>
+            <wsdl:output message="ns:actualizarInternetvResponse" wsaw:Action="urn:actualizarInternetvResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="obtenListaInternetv">
+            <wsdl:input message="ns:obtenListaInternetvRequest" wsaw:Action="urn:obtenListaInternetv"/>
+            <wsdl:output message="ns:obtenListaInternetvResponse" wsaw:Action="urn:obtenListaInternetvResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="InternetvDaoSoap11Binding" type="ns:InternetvDaoPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="guardarInternetv">
+            <soap:operation soapAction="urn:guardarInternetv" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtenerInternetv">
+            <soap:operation soapAction="urn:obtenerInternetv" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="eliminarInternetv">
+            <soap:operation soapAction="urn:eliminarInternetv" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="actualizarInternetv">
+            <soap:operation soapAction="urn:actualizarInternetv" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtenListaInternetv">
+            <soap:operation soapAction="urn:obtenListaInternetv" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="InternetvDaoSoap12Binding" type="ns:InternetvDaoPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="guardarInternetv">
+            <soap12:operation soapAction="urn:guardarInternetv" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtenerInternetv">
+            <soap12:operation soapAction="urn:obtenerInternetv" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="eliminarInternetv">
+            <soap12:operation soapAction="urn:eliminarInternetv" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="actualizarInternetv">
+            <soap12:operation soapAction="urn:actualizarInternetv" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtenListaInternetv">
+            <soap12:operation soapAction="urn:obtenListaInternetv" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="InternetvDaoHttpBinding" type="ns:InternetvDaoPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="guardarInternetv">
+            <http:operation location="guardarInternetv"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtenerInternetv">
+            <http:operation location="obtenerInternetv"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="eliminarInternetv">
+            <http:operation location="eliminarInternetv"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="actualizarInternetv">
+            <http:operation location="actualizarInternetv"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtenListaInternetv">
+            <http:operation location="obtenListaInternetv"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="InternetvDao">
+        <wsdl:port name="InternetvDaoHttpSoap11Endpoint" binding="ns:InternetvDaoSoap11Binding">
+            <soap:address location="http://localhost:8080/proyectoSW2/services/InternetvDao.InternetvDaoHttpSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="InternetvDaoHttpSoap12Endpoint" binding="ns:InternetvDaoSoap12Binding">
+            <soap12:address location="http://localhost:8080/proyectoSW2/services/InternetvDao.InternetvDaoHttpSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="InternetvDaoHttpEndpoint" binding="ns:InternetvDaoHttpBinding">
+            <http:address location="http://localhost:8080/proyectoSW2/services/InternetvDao.InternetvDaoHttpEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

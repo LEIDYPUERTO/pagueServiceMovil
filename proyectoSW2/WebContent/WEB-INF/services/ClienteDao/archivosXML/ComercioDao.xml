@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ax27="http://logica/xsd" xmlns:ns="http://dao" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema.xsd.xsd" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://dao">
+    <wsdl:documentation>
+		Please Type your service description here
+	</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema xmlns:ax28="http://logica/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://dao">
+            <xs:import namespace="http://logica/xsd"/>
+            <xs:element name="obtenComercio">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="id" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="obtenComercioResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax27:CamaraComercio"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="guardaComercio">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="camaraComercio" nillable="true" type="ax27:CamaraComercio"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="guardaComercioResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="obtenListaComercio">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="obtenListaComercioResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax27:CamaraComercio"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="actualizaComercio">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="camaraComercio" nillable="true" type="ax27:CamaraComercio"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="actualizaComercioResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="eliminaComercio">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="camaraComercio" nillable="true" type="ax27:CamaraComercio"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="eliminaComercioResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://logica/xsd">
+            <xs:complexType name="CamaraComercio">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="fechaPagoComercio" nillable="true" type="xs:date"/>
+                    <xs:element minOccurs="0" name="nitComercio" type="xs:int"/>
+                    <xs:element minOccurs="0" name="pagoCamaraComercio" type="xs:double"/>
+                    <xs:element minOccurs="0" name="valorNegocio" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="actualizaComercioRequest">
+        <wsdl:part name="parameters" element="ns:actualizaComercio"/>
+    </wsdl:message>
+    <wsdl:message name="actualizaComercioResponse">
+        <wsdl:part name="parameters" element="ns:actualizaComercioResponse"/>
+    </wsdl:message>
+    <wsdl:message name="obtenComercioRequest">
+        <wsdl:part name="parameters" element="ns:obtenComercio"/>
+    </wsdl:message>
+    <wsdl:message name="obtenComercioResponse">
+        <wsdl:part name="parameters" element="ns:obtenComercioResponse"/>
+    </wsdl:message>
+    <wsdl:message name="eliminaComercioRequest">
+        <wsdl:part name="parameters" element="ns:eliminaComercio"/>
+    </wsdl:message>
+    <wsdl:message name="eliminaComercioResponse">
+        <wsdl:part name="parameters" element="ns:eliminaComercioResponse"/>
+    </wsdl:message>
+    <wsdl:message name="guardaComercioRequest">
+        <wsdl:part name="parameters" element="ns:guardaComercio"/>
+    </wsdl:message>
+    <wsdl:message name="guardaComercioResponse">
+        <wsdl:part name="parameters" element="ns:guardaComercioResponse"/>
+    </wsdl:message>
+    <wsdl:message name="obtenListaComercioRequest">
+        <wsdl:part name="parameters" element="ns:obtenListaComercio"/>
+    </wsdl:message>
+    <wsdl:message name="obtenListaComercioResponse">
+        <wsdl:part name="parameters" element="ns:obtenListaComercioResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="ComercioDaoPortType">
+        <wsdl:operation name="actualizaComercio">
+            <wsdl:input message="ns:actualizaComercioRequest" wsaw:Action="urn:actualizaComercio"/>
+            <wsdl:output message="ns:actualizaComercioResponse" wsaw:Action="urn:actualizaComercioResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="obtenComercio">
+            <wsdl:input message="ns:obtenComercioRequest" wsaw:Action="urn:obtenComercio"/>
+            <wsdl:output message="ns:obtenComercioResponse" wsaw:Action="urn:obtenComercioResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="eliminaComercio">
+            <wsdl:input message="ns:eliminaComercioRequest" wsaw:Action="urn:eliminaComercio"/>
+            <wsdl:output message="ns:eliminaComercioResponse" wsaw:Action="urn:eliminaComercioResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="guardaComercio">
+            <wsdl:input message="ns:guardaComercioRequest" wsaw:Action="urn:guardaComercio"/>
+            <wsdl:output message="ns:guardaComercioResponse" wsaw:Action="urn:guardaComercioResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="obtenListaComercio">
+            <wsdl:input message="ns:obtenListaComercioRequest" wsaw:Action="urn:obtenListaComercio"/>
+            <wsdl:output message="ns:obtenListaComercioResponse" wsaw:Action="urn:obtenListaComercioResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ComercioDaoSoap11Binding" type="ns:ComercioDaoPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="actualizaComercio">
+            <soap:operation soapAction="urn:actualizaComercio" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtenComercio">
+            <soap:operation soapAction="urn:obtenComercio" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="eliminaComercio">
+            <soap:operation soapAction="urn:eliminaComercio" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="guardaComercio">
+            <soap:operation soapAction="urn:guardaComercio" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtenListaComercio">
+            <soap:operation soapAction="urn:obtenListaComercio" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="ComercioDaoSoap12Binding" type="ns:ComercioDaoPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="actualizaComercio">
+            <soap12:operation soapAction="urn:actualizaComercio" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtenComercio">
+            <soap12:operation soapAction="urn:obtenComercio" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="eliminaComercio">
+            <soap12:operation soapAction="urn:eliminaComercio" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="guardaComercio">
+            <soap12:operation soapAction="urn:guardaComercio" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtenListaComercio">
+            <soap12:operation soapAction="urn:obtenListaComercio" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="ComercioDaoHttpBinding" type="ns:ComercioDaoPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="actualizaComercio">
+            <http:operation location="actualizaComercio"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtenComercio">
+            <http:operation location="obtenComercio"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="eliminaComercio">
+            <http:operation location="eliminaComercio"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="guardaComercio">
+            <http:operation location="guardaComercio"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtenListaComercio">
+            <http:operation location="obtenListaComercio"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="ComercioDao">
+        <wsdl:port name="ComercioDaoHttpSoap11Endpoint" binding="ns:ComercioDaoSoap11Binding">
+            <soap:address location="http://localhost:8080/proyectoSW2/services/ComercioDao.ComercioDaoHttpSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="ComercioDaoHttpSoap12Endpoint" binding="ns:ComercioDaoSoap12Binding">
+            <soap12:address location="http://localhost:8080/proyectoSW2/services/ComercioDao.ComercioDaoHttpSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="ComercioDaoHttpEndpoint" binding="ns:ComercioDaoHttpBinding">
+            <http:address location="http://localhost:8080/proyectoSW2/services/ComercioDao.ComercioDaoHttpEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
