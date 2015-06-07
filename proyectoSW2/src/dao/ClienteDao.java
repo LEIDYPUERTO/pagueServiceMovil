@@ -91,7 +91,7 @@ public class ClienteDao{
 
 		try {
 			Connection conn = ConexionBD.obtenerConexion();
-			String queryDelete = "DELETE FROM cliente WHERE Cedula = ?";
+			String queryDelete = "DELETE * FROM cliente WHERE Cedula = ?";
 
 			PreparedStatement ppStm = conn.prepareStatement(queryDelete);
 			ppStm.setInt(1, cliente.getCedula());
