@@ -119,7 +119,7 @@ public class ClienteDao{
 
 		try {
 			Connection conn = ConexionBD.obtenerConexion();
-			String querySearch = "SELECT FROM cliente WHERE Cedula = ?";
+			String querySearch = "SELECT * FROM cliente WHERE Cedula = ?";
 
 			PreparedStatement ppStm = conn.prepareStatement(querySearch);
 			ppStm.setInt(1, id);
