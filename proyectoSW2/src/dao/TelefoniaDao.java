@@ -127,16 +127,16 @@ public class TelefoniaDao{
 	 * @param id
 	 * @return
 	 */
-	public Telefonia obtenTelefonia(TelefoniaId id){ 
+	public Telefonia obtenTelefonia(int id){ 
 		Telefonia telefonia = null;  
 
 		try {
 			Connection conn = ConexionBD.obtenerConexion();
-			String querySearch = "SELECT FROM telefonia "
-					+ "WHERE Recibo_Telefono = ?";
+			String querySearch = "SELECT * FROM telefonia "
+					+ "WHERE Cliente_Cedula = ?";
 
 			PreparedStatement ppStm = conn.prepareStatement(querySearch);
-			ppStm.setInt(1, id.getReciboTelefono());
+			ppStm.setInt(1, id);
 
 			ResultSet resultSet = ppStm.executeQuery();
 

@@ -123,14 +123,14 @@ public class AguaDao{
 	 * @param id
 	 * @return
 	 */
-	public EAgua obtenAgua(EAguaId id){ 
+	public EAgua obtenAgua(int id){ 
 		EAgua eAgua = null;  
 		try {
 			Connection conn = ConexionBD.obtenerConexion();
-			String querySearch = "SELECT FROM e_agua WHERE Recibo_Agua = ?";
+			String querySearch = "SELECT * FROM e_agua WHERE Cliente_Cedula = ?";
 
 			PreparedStatement ppStm = conn.prepareStatement(querySearch);
-			ppStm.setInt(1, id.getReciboAgua());
+			ppStm.setInt(1, id);
 
 			ResultSet resultSet = ppStm.executeQuery();
 

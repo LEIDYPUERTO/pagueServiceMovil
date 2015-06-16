@@ -26,7 +26,7 @@ import logica.CamaraComercio;
 public class ComercioDao{  
 
 	/**
-	 * Método que permite alacenar nueva informacion de 
+	 * Método que permite almacenar nueva informacion de 
 	 * camara de comercio en la base de datos
 	 * @param camaraComercio
 	 * @return
@@ -130,7 +130,7 @@ public class ComercioDao{
 
 		try {
 			Connection conn = ConexionBD.obtenerConexion();
-			String querySearch = "SELECT FROM camara_comercio "
+			String querySearch = "SELECT * FROM camara_comercio "
 					+ "WHERE Nit_Comercio = ?";
 
 			PreparedStatement ppStm = conn.prepareStatement(querySearch);

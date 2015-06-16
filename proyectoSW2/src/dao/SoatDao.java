@@ -130,7 +130,7 @@ public class SoatDao{
 		Soat soat = null; 
 		try {
 			Connection conn = ConexionBD.obtenerConexion();
-			String querySearch = "SELECT FROM soat "
+			String querySearch = "SELECT * FROM soat "
 					+ "WHERE N_Placa = ?";
 
 			PreparedStatement ppStm = conn.prepareStatement(querySearch);

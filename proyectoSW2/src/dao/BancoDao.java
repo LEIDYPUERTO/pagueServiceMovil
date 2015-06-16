@@ -63,19 +63,19 @@ public class BancoDao{
 	 * @param banco
 	 * @return
 	 */
-	public boolean actualizaBanco(Banco banco){
+	public boolean actualizaBanco(int id, double saldoNuevo){
 
 		try {
 			Connection conn = ConexionBD.obtenerConexion();
 
 			String queryUpdate = "UPDATE banco SET"
-					+ " Saldo = ? WHERE Numero_Cuenta= ?";
+					+ " Saldo = ? WHERE Cliente_Cedula= ?";
 
 
 			PreparedStatement ppStm = conn.prepareStatement(queryUpdate);
 
-			ppStm.setDouble(1, banco.getSaldo());
-			ppStm.setInt(2, banco.getId().getNumeroCuenta());
+			ppStm.setDouble(1, saldoNuevo);
+			ppStm.setInt(2, id);
 
 			ppStm.executeUpdate();
 
@@ -123,15 +123,15 @@ public class BancoDao{
 	 * @param id
 	 * @return
 	 */
-	public Banco obtenBanco(BancoId id){ 
+	public Banco obtenBanco(int id){ 
 		Banco banco = null;  
 
 		try {
 			Connection conn = ConexionBD.obtenerConexion();
-			String querySearch = "SELECT FROM banco WHERE Numero_Cuenta = ?";
+			String querySearch = "SELECT * FROM banco WHERE Cliente_Cedula = ?";
 
 			PreparedStatement ppStm = conn.prepareStatement(querySearch);
-			ppStm.setInt(1, id.getNumeroCuenta());
+			ppStm.setInt(1, id);
 
 			ResultSet resultSet = ppStm.executeQuery();
 

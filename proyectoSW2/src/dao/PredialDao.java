@@ -128,7 +128,7 @@ public class PredialDao{
 
 		try {
 			Connection conn = ConexionBD.obtenerConexion();
-			String querySearch = "SELECT FROM impuesto_predial "
+			String querySearch = "SELECT * FROM impuesto_predial "
 					+ "WHERE N_Predio = ?";
 
 			PreparedStatement ppStm = conn.prepareStatement(querySearch);

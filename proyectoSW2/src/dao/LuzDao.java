@@ -127,15 +127,15 @@ public class LuzDao{
 	 * @param id
 	 * @return
 	 */
-	public ELuz obtenLuz(ELuzId id){ 
+	public ELuz obtenLuz(int id){ 
 		ELuz eLuz = null;  
 		try {
 			Connection conn = ConexionBD.obtenerConexion();
-			String querySearch = "SELECT FROM e_luz "
-					+ "WHERE Recibo_Luz = ?";
+			String querySearch = "SELECT * FROM e_luz "
+					+ "WHERE Cliente_Cedula = ?";
 
 			PreparedStatement ppStm = conn.prepareStatement(querySearch);
-			ppStm.setInt(1, id.getReciboLuz());
+			ppStm.setInt(1, id);
 
 			ResultSet resultSet = ppStm.executeQuery();
 

@@ -127,15 +127,15 @@ public class GasDao{
 	 * @param id
 	 * @return
 	 */
-	public EGas obtenerGas(EGasId id){ 
+	public EGas obtenerGas(int id){ 
 		EGas eGas = null;  
 		try {
 			Connection conn = ConexionBD.obtenerConexion();
-			String querySearch = "SELECT FROM e_gas "
-					+ "WHERE Recibo_Gas = ?";
+			String querySearch = "SELECT * FROM e_gas "
+					+ "WHERE Cliente_Cedula = ?";
 
 			PreparedStatement ppStm = conn.prepareStatement(querySearch);
-			ppStm.setInt(1, id.getReciboGas());
+			ppStm.setInt(1, id);
 
 			ResultSet resultSet = ppStm.executeQuery();
 

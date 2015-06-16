@@ -122,16 +122,16 @@ public class InternetvDao{
 		}
 	}  
 
-	public InternetTv obtenerInternetv(InternetTvId id){ 
+	public InternetTv obtenerInternetv(int id){ 
 		InternetTv internetTv = null;  
 
 		try {
 			Connection conn = ConexionBD.obtenerConexion();
-			String querySearch = "SELECT FROM internet_tv "
-					+ "WHERE Recibo_Internet = ?";
+			String querySearch = "SELECT * FROM internet_tv "
+					+ "WHERE Cliente_Cedula = ?";
 
 			PreparedStatement ppStm = conn.prepareStatement(querySearch);
-			ppStm.setInt(1, id.getReciboInternet());
+			ppStm.setInt(1, id);
 
 			ResultSet resultSet = ppStm.executeQuery();
 
